@@ -7,26 +7,26 @@ public class Main {
         Scanner sc;
         try {
             sc= new Scanner(new File(args[0]));
-            // PrintWriter out = new PrintWriter(args[1]);
+            PrintWriter out = new PrintWriter(args[1]);
             
             while (sc.hasNext()) {
                 int n = Integer.parseInt(sc.nextLine());
                 int count = 0;
 
-                String sb = "[";
+                StringBuilder sb = new StringBuilder();
+                sb.append("[");
                 for (int i = 6; i <= n; i++) {
                     if (isPerfect(i)) {
                         count++;
-                        sb = sb + i + " ";
+                        sb.append(i).append(" ");
                     }
                 }
-                sb += "]";
-                sb = count + " " + sb;
-                
-                System.out.println(sb);
+                sb.append("]");
+                String result = count + "," + sb;
+                out.println(result);
             }
 
-            // out.close();
+            out.close();
             sc.close();
         }catch (Exception ex) {
             ex.printStackTrace();
